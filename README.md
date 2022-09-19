@@ -25,3 +25,8 @@ THEN the saved events persist
 ```
 
 ## Mock Up
+
+<img width="2237" alt="Screen Shot 2022-09-19 at 3 36 33 PM" src="https://user-images.githubusercontent.com/108949883/191131556-38b43383-c1ce-4361-ae99-fa4ddfe01420.png">
+
+I created a daily planner for my work day. I am able to save my tasks in local storage. My schedule shows past, present and future hours in three different colors. 
+Check out my daily planner using this link: 

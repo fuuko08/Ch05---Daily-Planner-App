@@ -24,7 +24,7 @@ function saveInput() {
 var timeBlockArr = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 function getData() {
-    for (let i = 9; i < 17; i++) {
+    for (var i = 0; i < timeBlockArr.length; i++) {
         $("#timeblock-[i]").each(function (i, v) {
             $(v).val(localStorage.getItem(timeBlockArr[i]));
         })
@@ -32,29 +32,28 @@ function getData() {
 };
 getData();
 
-
 // Function reset hour
 var interval = setInterval(updateTime, 60000);
 
 // Function to determine time blocks color
-
-var timeBlock = Array.from(document.querySelectorAll(".time-block"));
-console.log(timeBlock);
+var currentHour = moment().hours();
+console.log(currentHour);
 
 function updateTime() {
-    var currentHour = moment().hours();
-    console.log(currentHour);
-        for (var i = 0; i < timeBlock.length; i++) {
-            var blockHour = timeBlock[i];
-            if (blockHour === currentHour) {
-                blockHour.classList.add("present");
-            } else if (blockHour < currentHour) {
-                blockHour.classList.add("past");
-            } else if (blockHour > currentHour) {
-                blockHour.classList.add("future");
-            } else {
-                console.log("Enjoy your time off!")
-            }
-        } console.log(blockHour);
+$(".row").each(function() {
+    var timeBlock = parseInt($(this).attr("id"));
+    if (timeBlock === currentHour) {
+        $(this).addClass("present");
+    } else if (timeBlock < currentHour) {
+        $(this).addClass("past");
+        $(this).removeClass("present");
+    } else if (timeBlock > currentHour) {
+        $(this).addClass("future");
+        $(this).removeClass("present");
+        $(this).removeClass("past");
+    } else {
+        console.log("Enjoy your time off!")
     }
-updateTime(); 
+})
+}
+updateTime();
